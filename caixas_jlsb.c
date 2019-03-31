@@ -1,8 +1,9 @@
+    
 #include <stdio.h>
 #include <stdlib.h>
  
 int main (void) {
-    int N, P, *vet, caixa, pilha, tam, esquerda, direita; // N = número de caixas e P = número de pilhas
+    int N, P, *vet, cai, pil, tam, esquerda, direita; // N = número de caixas e P = número de pilhas
      
     scanf ("%d %d", &N, &P);
     do{
@@ -13,20 +14,20 @@ int main (void) {
             if(vet[i] == 0) break;
             
             for (int j = 0; j < vet[i]; j++) { // percorre pelo numero de caixas na pilha
-                scanf("%d", &caixa); // Numero das caixas na pilha até encontrar a caixa 1 e cair na condição do if
+                scanf("%d", &cai); // Numero das caixas na pilha até encontrar a caixa 1 e cair na condição do if
                 
-                if (caixa == 1) {// só executa os de baixo se passar por aq
+                if (cai == 1) {// só executa os de baixo se passar por aq
                     tam = j+1; // pega tamanho da pilha até a caixa desejada
-                    pilha = i; // pega a posição da caixa
+                    pil = i; // pega a posição da caixa
                 }
             }
         }
-        esquerda = vet[pilha] - tam;   // numero de caixas que estão acima
-        direita = vet[pilha] - tam;    // numero de caixas que estão acima
-        for (int a = pilha-1; vet[a] >= tam; a--){ //percorre as pilhas na posição
+        esquerda = vet[pil] - tam;   // numero de caixas que estão acima
+        direita = vet[pil] - tam;    // numero de caixas que estão acima
+        for (int a = pil-1; vet[a] >= tam; a--){ //percorre as pilhas na posição
             esquerda += (vet[a] - tam + 1);    // numero de caixas retiradas na pilha
         }
-        for (int b = pilha+1; vet[b] >= tam; b++){ 
+        for (int b = pil+1; vet[b] >= tam; b++){ 
             direita += (vet[b] - tam + 1);     // numero de caixas retiradas na pilha
         }
             printf("%d\n", (esquerda >= direita) ? direita : esquerda); //(condicional)  comando_se_for_verdadeiro : se_for_falso, print no menor
