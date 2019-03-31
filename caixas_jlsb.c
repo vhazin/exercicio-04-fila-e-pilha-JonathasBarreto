@@ -10,6 +10,8 @@ int main (void) {
         for (int i = 0; i < P; i++) { // percorre até o numero de pilhas P
             scanf("%d", &vet[i]); //Cada linha contém um inteiro, indicando quantas caixas há na pilha i, vet[i] faz isso
             
+            if(vet[i] == 0) break;
+            
             for (int j = 0; j < vet[i]; j++) { // percorre pelo numero de caixas na pilha
                 scanf("%d", &caixa); // Numero das caixas na pilha até encontrar a caixa 1 e cair na condição do if
                 
@@ -28,6 +30,7 @@ int main (void) {
             direita += (vet[b] - tam + 1);     // numero de caixas retiradas na pilha
         }
             printf("%d\n", (esquerda >= direita) ? direita : esquerda); //(condicional)  comando_se_for_verdadeiro : se_for_falso, print no menor
+
         scanf ("%d %d", &N, &P);
     }while (N!=0 || P!=0); // se for diferente dessa entrada ele sai do while liberando a memória no free
 }
